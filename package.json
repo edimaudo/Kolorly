@@ -1,0 +1,9 @@
+{
+  "name": "kolorly",
+  "version": "0.0.1",
+  "private": true,
+  "main": "src/main.tsx",
+  "dependencies": {
+    "@devvit/public-api": "latest"
+  }
+}
