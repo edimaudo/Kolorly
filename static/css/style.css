@@ -10,7 +10,7 @@ body {
 }
 
 body {
-    font-family: "Liberation Sans", sans-serif;
+    font-family: "Inter", sans-serif;
     background: #f4f5f7;
     color: #1f2933;
     line-height: 1.4;
@@ -20,7 +20,7 @@ button,
 a,
 input,
 select {
-    font-family: "Liberation Sans", sans-serif;
+    font-family: "Inter", sans-serif;
 }
 
 button {
@@ -325,6 +325,7 @@ a {
     color: #293442;
     font-weight: 600;
 }
+
 
 
 /* =========================================
@@ -1148,3 +1149,22 @@ a {
         transition-duration: 0.01ms !important;
     }
 }
+
+/* Dark Mode Styles */
+[data-theme="dark"] body {
+    background: #121824;
+    color: #f4f5f7;
+}
+[data-theme="dark"] .comparison-card,
+[data-theme="dark"] .status-bar,
+[data-theme="dark"] .palette-container,
+[data-theme="dark"] .modal {
+    background: #1e293b;
+    border-color: #334155;
+    color: #f4f5f7;
+}
+
+/* Font Size Rules */
+[data-font-size="small"] { font-size: 14px; }
+[data-font-size="medium"] { font-size: 16px; }
+[data-font-size="large"] { font-size: 18px; }
