@@ -1,0 +1,601 @@
+{% extends "base.html" %}
+
+{% block title %}
+Kolorly
+{% endblock %}
+
+
+{% block content %}
+
+<section class="game-layout">
+
+
+    <!-- GAME STATUS -->
+
+    <div class="status-bar">
+
+        <div class="status-item">
+
+            <span class="status-label">
+                Accuracy
+            </span>
+
+            <span id="accuracy" class="status-value">
+                --
+            </span>
+
+        </div>
+
+
+        <div class="status-item">
+
+            <span class="status-label">
+                Round
+            </span>
+
+            <span id="round" class="status-value">
+                1/5
+            </span>
+
+        </div>
+
+
+        <div class="status-item">
+
+            <span class="status-label">
+                Time
+            </span>
+
+            <span id="timer" class="status-value">
+                30
+            </span>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- COLOR COMPARISON -->
+
+    <section class="comparison-section">
+
+
+        <div class="comparison-card">
+
+            <h2 class="section-title">
+                Match This Color
+            </h2>
+
+
+            <div
+                id="targetColor"
+                class="target-color">
+            </div>
+
+        </div>
+
+
+
+        <div class="comparison-card">
+
+            <h2 class="section-title">
+                Your Selection
+            </h2>
+
+
+            <div
+                id="selectionColor"
+                class="selection-preview">
+            </div>
+
+
+            <span
+                id="selectionStatus"
+                class="selection-status"
+                aria-live="polite">
+                Select a color
+            </span>
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- COLOR PALETTE -->
+
+    <section class="palette-section">
+
+        <h2 class="section-title">
+            Choose the Matching Color
+        </h2>
+
+
+        <div class="palette-wrapper">
+
+            <div class="palette-container">
+
+                <canvas
+                    id="colorPalette"
+                    class="palette-canvas"
+                    tabindex="0"
+                    aria-label="Interactive color palette">
+                </canvas>
+
+
+                <!-- SELECTION MARKER -->
+
+                <div
+                    id="paletteSelectionMarker"
+                    class="palette-selection-marker"
+                    aria-hidden="true">
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ROUND RESULT -->
+
+    <section
+        id="roundResult"
+        class="round-result"
+        aria-live="polite"
+        aria-hidden="true">
+
+        <div class="round-result-content">
+
+            <span class="round-result-label">
+                Round Result
+            </span>
+
+
+            <strong
+                id="roundResultAccuracy"
+                class="round-result-accuracy">
+                --
+            </strong>
+
+
+            <span
+                id="roundResultMessage"
+                class="round-result-message">
+                --
+            </span>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ACTIONS -->
+
+    <div class="game-actions">
+
+        <button
+            id="submitGuess"
+            class="btn btn-primary"
+            type="button">
+
+            Submit Guess
+
+        </button>
+
+
+        <button
+            id="backButton"
+            class="btn btn-secondary"
+            type="button">
+
+            Back
+
+        </button>
+
+    </div>
+
+
+</section>
+
+
+
+<!-- ROUND TRANSITION MODAL -->
+
+<div
+    id="roundTransition"
+    class="modal-overlay"
+    role="dialog"
+    aria-modal="true"
+    aria-hidden="true">
+
+    <div class="modal">
+
+        <h2 class="modal-title">
+            Round Complete
+        </h2>
+
+
+        <div class="modal-content">
+
+
+            <div class="result-colors">
+
+                <div class="result-color-item">
+
+                    <span>
+                        Target
+                    </span>
+
+                    <div
+                        id="transitionTargetColor"
+                        class="result-color">
+                    </div>
+
+                </div>
+
+
+                <div class="result-color-item">
+
+                    <span>
+                        Your Selection
+                    </span>
+
+                    <div
+                        id="transitionSelectionColor"
+                        class="result-color">
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="result-stat">
+
+                <span>
+                    Accuracy
+                </span>
+
+                <strong id="roundAccuracy">
+                    --
+                </strong>
+
+            </div>
+
+
+            <div
+                id="roundFeedback"
+                class="round-feedback">
+                --
+            </div>
+
+
+        </div>
+
+
+        <p
+            id="transitionMessage"
+            class="text-muted">
+
+            Next Round...
+
+        </p>
+
+    </div>
+
+</div>
+
+
+
+<!-- TIME UP TRANSITION -->
+
+<div
+    id="timeUpOverlay"
+    class="modal-overlay"
+    role="status"
+    aria-live="assertive"
+    aria-hidden="true">
+
+    <div class="modal time-up-modal">
+
+        <h2 class="modal-title">
+            Time's Up
+        </h2>
+
+
+        <p class="text-muted">
+            Your round is complete.
+        </p>
+
+    </div>
+
+</div>
+
+
+
+<!-- EXIT CONFIRMATION MODAL -->
+
+<div
+    id="exitModal"
+    class="modal-overlay"
+    role="dialog"
+    aria-modal="true"
+    aria-hidden="true">
+
+    <div class="modal">
+
+        <h2 class="modal-title">
+            End Game?
+        </h2>
+
+
+        <div class="modal-content">
+
+            <p>
+                Do you want to end the game
+            </p>
+
+        </div>
+
+
+        <div class="modal-actions">
+
+            <button
+                id="confirmExit"
+                class="btn btn-primary"
+                type="button">
+
+                Yes
+
+            </button>
+
+
+            <button
+                id="cancelExit"
+                class="btn btn-secondary"
+                type="button">
+
+                No
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- GAME COMPLETE MODAL -->
+
+<div
+    id="gameCompleteModal"
+    class="modal-overlay"
+    role="dialog"
+    aria-modal="true"
+    aria-hidden="true">
+
+    <div class="modal game-complete-modal">
+
+        <h2 class="modal-title">
+            Game Complete
+        </h2>
+
+
+        <div class="modal-content">
+
+
+            <!-- OVERALL PERFORMANCE -->
+
+            <div class="performance-summary">
+
+                <span class="performance-label">
+                    Overall Performance
+                </span>
+
+
+                <strong
+                    id="finalPerformanceMessage"
+                    class="performance-message">
+                    --
+                </strong>
+
+
+                <strong
+                    id="finalAccuracy"
+                    class="final-accuracy">
+                    --
+                </strong>
+
+
+                <span class="performance-label">
+                    Average Accuracy
+                </span>
+
+            </div>
+
+
+
+            <!-- PERFORMANCE BAR -->
+
+            <div class="performance-bar">
+
+                <div
+                    id="performanceBarFill"
+                    class="performance-bar-fill">
+                </div>
+
+            </div>
+
+
+
+            <!-- SESSION STATS -->
+
+            <div class="result-stats">
+
+
+                <div class="result-stat">
+
+                    <span>
+                        Best Match
+                    </span>
+
+                    <strong id="bestAccuracy">
+                        --
+                    </strong>
+
+                </div>
+
+
+                <div class="result-stat">
+
+                    <span>
+                        Lowest Match
+                    </span>
+
+                    <strong id="lowestAccuracy">
+                        --
+                    </strong>
+
+                </div>
+
+
+                <div class="result-stat">
+
+                    <span>
+                        Rounds Played
+                    </span>
+
+                    <strong id="roundsPlayed">
+                        5
+                    </strong>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- COLOR PERCEPTION -->
+
+            <section
+                id="colorPerformance"
+                class="color-performance">
+
+                <h3 class="section-title">
+                    Color Perception
+                </h3>
+
+
+                <div class="perception-highlight">
+
+
+                    <div class="perception-result">
+
+                        <span class="perception-label">
+                            Strongest
+                        </span>
+
+
+                        <strong
+                            id="strongestColor"
+                            class="perception-value">
+                            --
+                        </strong>
+
+
+                        <span
+                            id="strongestColorAccuracy"
+                            class="perception-score">
+                            --
+                        </span>
+
+                    </div>
+
+
+
+                    <div class="perception-result">
+
+                        <span class="perception-label">
+                            Needs Practice
+                        </span>
+
+
+                        <strong
+                            id="weakestColor"
+                            class="perception-value">
+                            --
+                        </strong>
+
+
+                        <span
+                            id="weakestColorAccuracy"
+                            class="perception-score">
+                            --
+                        </span>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <div
+                    id="colorPerformanceList"
+                    class="color-performance-list">
+
+                </div>
+
+
+            </section>
+
+
+        </div>
+
+
+
+        <!-- GAME COMPLETE ACTIONS -->
+
+        <div class="modal-actions">
+
+            <button
+                id="playAgain"
+                class="btn btn-primary"
+                type="button">
+
+                Play Again
+
+            </button>
+
+
+            <button
+                id="exitGame"
+                class="btn btn-secondary"
+                type="button">
+
+                Exit Game
+
+            </button>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+
+<script src="{{ url_for('static', filename='js/game.js') }}"></script>
+
+{% endblock %}

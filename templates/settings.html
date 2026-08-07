@@ -1,0 +1,549 @@
+{% extends "base.html" %}
+
+
+
+{% block title %}
+
+Kolorly - Settings
+
+{% endblock %}
+
+
+
+
+
+
+
+{% block content %}
+
+
+
+<section class="settings-container"
+         aria-labelledby="settings-title">
+
+
+
+
+
+    <h2 id="settings-title"
+        class="app-title">
+
+        Settings
+
+    </h2>
+
+
+
+
+
+
+
+    <!-- ============================
+         ABOUT GAME
+    ============================== -->
+
+
+
+    <section class="card settings-section"
+             aria-labelledby="about-title">
+
+
+
+        <h3 id="about-title"
+            class="card-title">
+
+            About Kolorly
+
+        </h3>
+
+
+
+
+        <p class="card-description">
+
+            Kolorly is a color matching game that
+            challenges your ability to identify and
+            reproduce colors.
+
+        </p>
+
+
+
+
+        <p class="card-description">
+
+            Each round displays a target color.
+            Use the color picker to create the closest
+            possible match before the timer expires.
+
+        </p>
+
+
+
+
+        <p class="card-description">
+
+            Your performance is measured using color
+            accuracy. The closer your selected color is
+            to the target, the higher your score.
+
+        </p>
+
+
+
+
+    </section>
+
+
+
+
+
+
+
+
+
+    <!-- ============================
+         APPEARANCE
+    ============================== -->
+
+
+    <section class="card settings-section"
+             aria-labelledby="theme-title">
+
+
+
+        <h3 id="theme-title"
+            class="card-title">
+
+            Appearance
+
+        </h3>
+
+
+
+
+
+        <fieldset>
+
+
+            <legend class="settings-label">
+
+                Theme
+
+            </legend>
+
+
+
+
+            <div class="option-group">
+
+
+
+                <div class="option-item">
+
+
+                    <input type="radio"
+                           id="theme-light"
+                           name="theme"
+                           value="light">
+
+
+
+                    <label for="theme-light">
+
+                        Light Mode
+
+                    </label>
+
+
+                </div>
+
+
+
+
+
+                <div class="option-item">
+
+
+                    <input type="radio"
+                           id="theme-dark"
+                           name="theme"
+                           value="dark">
+
+
+
+                    <label for="theme-dark">
+
+                        Dark Mode
+
+                    </label>
+
+
+                </div>
+
+
+
+
+            </div>
+
+
+
+        </fieldset>
+
+
+
+    </section>
+
+
+
+
+
+
+
+
+
+    <!-- ============================
+         FONT SIZE
+    ============================== -->
+
+
+
+    <section class="card settings-section"
+             aria-labelledby="font-title">
+
+
+
+        <h3 id="font-title"
+            class="card-title">
+
+            Font Size
+
+        </h3>
+
+
+
+
+
+        <fieldset>
+
+
+            <legend class="settings-label">
+
+                Adjust application text size
+
+            </legend>
+
+
+
+
+
+            <div class="option-group">
+
+
+
+                <div class="option-item">
+
+
+                    <input type="radio"
+                           id="font-small"
+                           name="font-size"
+                           value="small">
+
+
+
+                    <label for="font-small">
+
+                        Small
+
+                    </label>
+
+
+                </div>
+
+
+
+
+
+                <div class="option-item">
+
+
+                    <input type="radio"
+                           id="font-medium"
+                           name="font-size"
+                           value="medium">
+
+
+
+                    <label for="font-medium">
+
+                        Medium
+
+                    </label>
+
+
+                </div>
+
+
+
+
+
+                <div class="option-item">
+
+
+                    <input type="radio"
+                           id="font-large"
+                           name="font-size"
+                           value="large">
+
+
+
+                    <label for="font-large">
+
+                        Large
+
+                    </label>
+
+
+                </div>
+
+
+
+
+            </div>
+
+
+
+        </fieldset>
+
+
+
+    </section>
+
+
+
+
+
+
+
+
+
+    <!-- ============================
+         GAME SPEED
+    ============================== -->
+
+
+    <section class="card settings-section"
+             aria-labelledby="speed-title">
+
+
+
+        <h3 id="speed-title"
+            class="card-title">
+
+            Game Speed
+
+        </h3>
+
+
+
+
+        <fieldset>
+
+
+            <legend class="settings-label">
+
+                Time available for each round
+
+            </legend>
+
+
+
+
+
+            <div class="option-group">
+
+
+
+
+
+                <div class="option-item">
+
+
+                    <input type="radio"
+                           id="speed-25"
+                           name="game-speed"
+                           value="25">
+
+
+
+                    <label for="speed-25">
+
+
+                        <strong>
+                            25 Seconds
+                        </strong>
+
+
+                        <br>
+
+
+                        <span class="text-muted">
+
+                            Fast challenge mode
+
+                        </span>
+
+
+                    </label>
+
+
+                </div>
+
+
+
+
+
+
+
+
+
+                <div class="option-item">
+
+
+                    <input type="radio"
+                           id="speed-45"
+                           name="game-speed"
+                           value="45">
+
+
+
+                    <label for="speed-45">
+
+
+                        <strong>
+                            45 Seconds
+                        </strong>
+
+
+                        <br>
+
+
+                        <span class="text-muted">
+
+                            Balanced gameplay mode
+
+                        </span>
+
+
+                    </label>
+
+
+                </div>
+
+
+
+
+
+
+
+
+
+                <div class="option-item">
+
+
+                    <input type="radio"
+                           id="speed-60"
+                           name="game-speed"
+                           value="60">
+
+
+
+                    <label for="speed-60">
+
+
+                        <strong>
+                            60 Seconds
+                        </strong>
+
+
+                        <br>
+
+
+                        <span class="text-muted">
+
+                            Relaxed learning mode
+
+                        </span>
+
+
+                    </label>
+
+
+                </div>
+
+
+
+
+
+
+            </div>
+
+
+
+        </fieldset>
+
+
+
+    </section>
+
+
+
+
+
+
+
+
+
+    <!-- ============================
+         NAVIGATION
+    ============================== -->
+
+
+
+    <a href="{{ url_for('home') }}"
+       class="btn btn-secondary btn-block">
+
+        Back
+
+    </a>
+
+
+
+
+
+
+</section>
+
+
+
+
+
+{% endblock %}
+
+
+
+
+
+
+
+{% block scripts %}
+
+
+
+<script src="{{ url_for('static',
+filename='js/settings.js') }}">
+</script>
+
+
+
+{% endblock %}

@@ -1,1 +1,3 @@
-# kolorly
+# Kolorly
+
+Foundation package.

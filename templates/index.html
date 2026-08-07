@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block title %}
+Kolorly
+{% endblock %}
+
+
+{% block content %}
+
+<section class="hero">
+
+
+    <h1>
+        Train Your Color Perception
+    </h1>
+
+
+    <p>
+        Improve your ability to recognize
+        and match colors accurately.
+    </p>
+
+
+
+    <div class="hero-actions">
+
+
+        <a
+            href="{{ url_for('game') }}"
+            class="btn btn-primary">
+
+            Play
+
+        </a>
+
+
+
+        <a
+            href="{{ url_for('settings') }}"
+            class="btn btn-secondary">
+
+            Settings
+
+        </a>
+
+
+    </div>
+
+
+</section>
+
+{% endblock %}
