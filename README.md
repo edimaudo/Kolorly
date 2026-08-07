@@ -1,3 +1,3 @@
 # Kolorly
 
-Foundation package.
+Train your color perception
